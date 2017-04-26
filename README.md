@@ -12,3 +12,5 @@
 - Clean build folders `rm -rf android/build && rm -rf ios/build`
 
 - Run app `react-native run-ios or react-native run-android`
+
+rm -rf node_modules && npm install && rm -rf android/build && rm -rf ios/build && react-native run-ios

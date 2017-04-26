@@ -8,12 +8,9 @@ export default class BodyMapScreen extends Component {
 
   render() {
     const {navigate} = this.props.navigation;
-
+    
     return (
       <Container>
-        <Content>
-          <Text>BodyMap</Text>
-        </Content>
           <Footer>
             <FooterTab>
               <Button small transparent>

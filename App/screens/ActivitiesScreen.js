@@ -1,10 +1,19 @@
-import React, {Component} from 'react';
-import {Text, StyleSheet} from 'react-native';
+import React from 'react';
+import {StyleSheet, Text} from 'react-native';
+import { Col, Row, Grid } from "react-native-easy-grid";
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon } from 'native-base';
 
-export default class SettingsScreen extends Component {
+export default class ActivitiesScreen extends React.Component {
+
+  static navigationOptions = {
+    drawerLabel: 'Home',
+  };
+
   constructor(props) {
     super(props);
+    this.state = {
+      firstTimeWelcome: true,
+    };
   }
 
   render() {
@@ -12,10 +21,8 @@ export default class SettingsScreen extends Component {
 
     return (
       <Container>
-        <Header>
-          <Title>Settings</Title>
-        </Header>
         <Content>
+          <Text>Activites</Text>
         </Content>
       </Container>
     );

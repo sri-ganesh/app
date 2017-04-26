@@ -1,22 +1,17 @@
 import React, {Component} from 'react';
-import {Text, StyleSheet} from 'react-native';
+import {Text, View, TouchableOpacity, StyleSheet, Alert, Platform} from 'react-native';
+import {StackNavigator} from 'react-navigation';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon } from 'native-base';
 
-export default class SettingsScreen extends Component {
-  constructor(props) {
-    super(props);
-  }
+export default class ForgottenPasswordScreen extends Component {
+  static navigationOptions = {title: 'ForgottenPasswordScreen',};
 
   render() {
     const {navigate} = this.props.navigation;
 
     return (
       <Container>
-        <Header>
-          <Title>Settings</Title>
-        </Header>
-        <Content>
-        </Content>
+        <Text>ForgottenPasswordScreen</Text>
       </Container>
     );
   }

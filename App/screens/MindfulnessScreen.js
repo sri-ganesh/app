@@ -1,19 +1,15 @@
 import React, {Component} from 'react';
-import {Text, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet} from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon } from 'native-base';
 
-export default class SettingsScreen extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+export default class Mindfulness extends Component {
   render() {
     const {navigate} = this.props.navigation;
 
     return (
       <Container>
         <Header>
-          <Title>Settings</Title>
+          <Title>MindfulnessScreen</Title>
         </Header>
         <Content>
         </Content>
