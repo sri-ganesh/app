@@ -24,27 +24,6 @@ export default class DashboardScreen extends React.Component {
 
     return (
       <Container>
-        <Header>
-          <Button small>
-            <Icon
-              name='ios-menu'
-              style={{fontSize: 20}}
-            />
-          </Button>
-          <Title>activeXbacks</Title>
-          <Button small>
-            <Icon
-              name='ios-chatbubbles'
-              style={{fontSize: 20}}
-            />
-          </Button>
-          <Button small>
-            <Icon
-              name='ios-help'
-              style={{fontSize: 20}}
-            />
-          </Button>
-        </Header>
         <Content>
           <Grid>
             <Row size={2}>

@@ -2,8 +2,22 @@ import React from 'react';
 import { StyleSheet, View, Text} from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon } from 'native-base';
 import { Col, Row, Grid } from "react-native-easy-grid";
+import Accordion from 'react-native-collapsible/Accordion';
 
 import HeaderComponent from '../components/HeaderComponent';
+
+import IntroDialogueComponent from '../components/IntroDialogueComponent';
+
+const AccordionContent = [
+  {
+    title: 'Dashboard',
+    content: ''
+  },
+  {
+    title: 'Activities',
+    content: '',
+  }
+];
 
 export default class DashboardScreen extends React.Component {
 
@@ -11,11 +25,29 @@ export default class DashboardScreen extends React.Component {
     drawerLabel: 'Home',
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      firstTimeWelcome: true,
-    };
+  state = {
+    firstTimeWelcome: true,
+    activeSection: false,
+    collapsed: true,
+  };
+
+
+  _toggleExpanded = () => {
+    this.setState({ collapsed: !this.state.collapsed });
+  }
+
+  _setSection(section) {
+    this.setState({ activeSection: section });
+  }
+
+  _renderHeader(section, i, isActive) {
+    return ( <Text>{section.title}</Text> );
+  }
+
+  _renderContent(section, i, isActive) {
+    return (
+      <View><Text>{section.content}</Text></View>
+    );
   }
 
   render() {
@@ -33,16 +65,13 @@ export default class DashboardScreen extends React.Component {
           </Grid>
         </Content>
         <View>
-          <Text
-            onPress={() => navigate('Dashboard')}
-          >
-            Dashboard
-          </Text>
-          <Text
-            onPress={() => navigate('Activities')}
-          >
-            activities
-          </Text>
+          <Accordion
+            activeSection={this.state.activeSection}
+            sections={AccordionContent}
+            renderHeader={this._renderHeader}
+            renderContent={this._renderContent}
+            onChange={this._setSection.bind(this)}
+          />
         </View>
       </Container>
     );
