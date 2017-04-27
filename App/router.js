@@ -17,7 +17,6 @@ export const NavigationMainStack = StackNavigator({
     Home: {screen: HomeScreen},
     Dashboard: {screen: DashboardScreen},
     Activities: {screen: ActivitiesScreen},
-
   },{
     mode: 'modal',
     headerMode: 'none',

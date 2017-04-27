@@ -10,8 +10,8 @@ export default class LoginComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: ''
+      email: 'test@email.com',
+      password: '123456'
     };
   }
 

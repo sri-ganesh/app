@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import { Header, Title, Button, Icon, Text } from 'native-base';
 import { Col, Row, Grid } from "react-native-easy-grid";
 
-const HeaderComponent = ({navigation}) => {
+const HeaderComponent = ({navigate}) => {;
   return (
     <Header>
       <Grid>
@@ -13,7 +13,6 @@ const HeaderComponent = ({navigation}) => {
               <Icon
                 name='ios-menu'
                 style={{fontSize: 20}}
-                onPress={() => navigate('DrawerOpen')}
               />
             </Button>
           </Col>
