@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Text, StyleSheet} from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Switch, ListItem} from 'native-base';
 
+import HeaderComponent from '../components/HeaderComponent';
+
 export default class NotificationsScreen extends Component {
   static navigationOptions = {
   };
@@ -19,28 +21,12 @@ export default class NotificationsScreen extends Component {
 
     return (
       <Container>
-        <Header>
-          <Left>
-            <Button
-              transparent
-            >
-              <Icon name='ios-menu' />
-            </Button>
-          </Left>
-          <Body>
-            <Title>{this.state.title}</Title>
-            <Text>{this.state.subtitle}</Text>
-          </Body>
-          <Right>
-            <Button
-              transparent
-              onPress={() => navigate('NavigationMain')}
-            >
-              <Icon name='arrow-back' />
-            </Button>
-          </Right>
-        </Header>
 
+        <HeaderComponent
+          navigate = {navigate}
+          title = {this.state.title}
+        />
+      
         <Content>
           <ListItem>
             <Body>

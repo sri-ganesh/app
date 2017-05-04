@@ -4,6 +4,7 @@ import { Header, Title, Button, Icon, Text, Left, Right, Body} from 'native-base
 import { Col, Row, Grid } from "react-native-easy-grid";
 
 const HeaderComponent = (props) => {
+
   return (
     <Header>
       <Left>
@@ -12,15 +13,17 @@ const HeaderComponent = (props) => {
         >
           <Icon
             name='ios-menu'
-            tyle={{fontSize: 18}}
+            style={{fontSize: 18}}
             onPress={() => props.navigate('DrawerOpen')}
           />
         </Button>
       </Left>
       <Body>
-        <Title>activebacks</Title>
+        <Title>{props.title}</Title>
       </Body>
       <Right>
+
+      {props.displayHomeButtons ? (
         <Button transparent>
           <Icon
             name='ios-chatbubbles'
@@ -31,10 +34,22 @@ const HeaderComponent = (props) => {
             style={{fontSize: 25}}
           />
         </Button>
+      ) : (
+        <Button
+          transparent
+          onPress={() => props.navigate('NavigationMain')}
+        >
+          <Icon name='arrow-back' />
+        </Button>
+      )}
       </Right>
     </Header>
   );
 }
+
+HeaderComponent.defaultProps = {
+  displayHomeButtons: false
+};
 
 const styles = StyleSheet.create({
 });

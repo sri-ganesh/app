@@ -56,34 +56,11 @@ export default class HomeScreen extends React.Component {
     return (
       <Container>
 
-        <Header>
-          <Left>
-            <Button
-              transparent
-            >
-              <Icon
-                name='ios-menu'
-                tyle={{fontSize: 18}}
-                onPress={() => navigate('DrawerOpen')}
-              />
-            </Button>
-          </Left>
-          <Body>
-            <Title>activebacks</Title>
-          </Body>
-          <Right>
-            <Button transparent>
-              <Icon
-                name='ios-chatbubbles'
-                style={{fontSize: 25}}
-              />
-              <Icon
-                name='ios-help'
-                style={{fontSize: 25}}
-              />
-            </Button>
-          </Right>
-        </Header>
+        <HeaderComponent
+          navigate = {navigate}
+          title = "activebacks"
+          displayHomeButtons={true}
+        />
 
         <Content>
           <Grid>

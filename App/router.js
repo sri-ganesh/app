@@ -12,6 +12,7 @@ import DailyGymScreen from './screens/DailyGymScreen';
 import MindfulnessScreen from './screens/MindfulnessScreen';
 
 import Sidebar from './screens/Sidebar';
+
 import HelpScreen from './screens/HelpScreen';
 import AccountScreen from './screens/AccountScreen';
 import NotificationsScreen from './screens/NotificationsScreen';
@@ -50,6 +51,8 @@ const DrawerRoutes = DrawerNavigator({
   EditProfile: {screen: EditProfileScreen},
 },{
   headerMode: 'none',
+  drawerWidth: 250,
+  contentComponent: props => <Sidebar {...props}/>
 });
 
 export const Root = StackNavigator({
