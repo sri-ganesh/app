@@ -14,3 +14,5 @@
 - Run app `react-native run-ios or react-native run-android`
 
 rm -rf node_modules && npm install && rm -rf android/build && rm -rf ios/build && react-native run-ios
+
+If youre recieving 'Systrace' error install & run react-native-git-upgrade in the project directory.
