@@ -5,8 +5,8 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 import Accordion from 'react-native-collapsible/Accordion';
 
 import HeaderComponent from '../components/HeaderComponent';
-
-import IntroDialogueComponent from '../components/IntroDialogueComponent';
+import NLIComponent from '../components/NLIComponent';
+import PainIndexComponent from '../components/PainIndexComponent';
 
 const AccordionContent = [
   {
@@ -19,7 +19,7 @@ const AccordionContent = [
   }
 ];
 
-export default class DashboardScreen extends React.Component {
+export default class HomeScreen extends React.Component {
 
   static navigationOptions = {
     drawerLabel: 'Home',
@@ -55,27 +55,65 @@ export default class DashboardScreen extends React.Component {
 
     return (
       <Container>
-        <HeaderComponent />
+
+        <Header>
+          <Left>
+            <Button
+              transparent
+            >
+              <Icon
+                name='ios-menu'
+                tyle={{fontSize: 18}}
+                onPress={() => navigate('DrawerOpen')}
+              />
+            </Button>
+          </Left>
+          <Body>
+            <Title>activebacks</Title>
+          </Body>
+          <Right>
+            <Button transparent>
+              <Icon
+                name='ios-chatbubbles'
+                style={{fontSize: 25}}
+              />
+              <Icon
+                name='ios-help'
+                style={{fontSize: 25}}
+              />
+            </Button>
+          </Right>
+        </Header>
+
         <Content>
           <Grid>
             <Row>
+              <NLIComponent
+                firstTime={this.state.firstTimeWelcome}
+                navigate={this.props.navigation}
+              />
             </Row>
             <Row>
             </Row>
           </Grid>
         </Content>
-        <View>
-          <Accordion
-            activeSection={this.state.activeSection}
-            sections={AccordionContent}
-            renderHeader={this._renderHeader}
-            renderContent={this._renderContent}
-            onChange={this._setSection.bind(this)}
-          />
-        </View>
+
       </Container>
     );
   }
 }
+
+/*
+<View>
+  <Accordion
+    activeSection={this.state.activeSection}
+    sections={AccordionContent}
+    renderHeader={this._renderHeader}
+    renderContent={this._renderContent}
+    onChange={this._setSection.bind(this)}
+  />
+</View>
+*/
+
 
 const styles = StyleSheet.create({});

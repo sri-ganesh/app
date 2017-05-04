@@ -63,7 +63,10 @@ export default class LoginComponent extends Component {
           >
             <Text>login </Text>
           </Button>
-          <Button dark onPress={() => navigate('Register')}>
+          <Button
+            dark
+            onPress={() => navigate('Register')}
+          >
             <Text>sign up </Text>
           </Button>
         </Row>
