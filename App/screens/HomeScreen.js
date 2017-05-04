@@ -21,34 +21,11 @@ const AccordionContent = [
 
 export default class HomeScreen extends React.Component {
 
-  static navigationOptions = {
-    drawerLabel: 'Home',
-  };
-
   state = {
     firstTimeWelcome: true,
     activeSection: false,
     collapsed: true,
   };
-
-
-  _toggleExpanded = () => {
-    this.setState({ collapsed: !this.state.collapsed });
-  }
-
-  _setSection(section) {
-    this.setState({ activeSection: section });
-  }
-
-  _renderHeader(section, i, isActive) {
-    return ( <Text>{section.title}</Text> );
-  }
-
-  _renderContent(section, i, isActive) {
-    return (
-      <View><Text>{section.content}</Text></View>
-    );
-  }
 
   render() {
     const {navigate} = this.props.navigation;
@@ -69,6 +46,16 @@ export default class HomeScreen extends React.Component {
                 firstTime={this.state.firstTimeWelcome}
                 navigate={this.props.navigation}
               />
+              <Button
+                onPress={() => navigate('Dashboard')}
+              >
+                <Text>Dashboard</Text>
+              </Button>
+              <Button
+                onPress={() => navigate('Activities')}
+              >
+                <Text>Activities</Text>
+              </Button>
             </Row>
             <Row>
             </Row>
@@ -81,6 +68,25 @@ export default class HomeScreen extends React.Component {
 }
 
 /*
+
+_toggleExpanded = () => {
+  this.setState({ collapsed: !this.state.collapsed });
+}
+
+_setSection(section) {
+  this.setState({ activeSection: section });
+}
+
+_renderHeader(section, i, isActive) {
+  return ( <Text>{section.title}</Text> );
+}
+
+_renderContent(section, i, isActive) {
+  return (
+    <View><Text>{section.content}</Text></View>
+  );
+}
+
 <View>
   <Accordion
     activeSection={this.state.activeSection}
@@ -91,6 +97,5 @@ export default class HomeScreen extends React.Component {
   />
 </View>
 */
-
 
 const styles = StyleSheet.create({});
