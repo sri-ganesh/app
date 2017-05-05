@@ -12,8 +12,8 @@ const HeaderComponent = (props) => {
           transparent
         >
           <Icon
-            name='ios-menu'
-            style={{fontSize: 18}}
+            name='md-menu'
+            style={{fontSize: 25}}
             onPress={() => props.navigate('DrawerOpen')}
           />
         </Button>
@@ -26,11 +26,11 @@ const HeaderComponent = (props) => {
       {props.displayHomeButtons ? (
         <Button transparent>
           <Icon
-            name='ios-chatbubbles'
+            name='md-chatbubbles'
             style={{fontSize: 25}}
           />
           <Icon
-            name='ios-help'
+            name='md-help'
             style={{fontSize: 25}}
           />
         </Button>
@@ -39,7 +39,7 @@ const HeaderComponent = (props) => {
           transparent
           onPress={() => props.navigate('NavigationMain')}
         >
-          <Icon name='arrow-back' />
+          <Icon name='md-arrow-back' />
         </Button>
       )}
       </Right>
