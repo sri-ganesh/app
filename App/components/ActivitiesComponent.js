@@ -3,12 +3,11 @@ import {StyleSheet, Text} from 'react-native';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { Container, Header, Title, Content, Button, Icon, Card, CardItem, Body} from 'native-base';
 
-import HeaderComponent from '../components/HeaderComponent';
 import ActivityListComponent from '../components/ActivityListComponent';
 import ActivityExercisePreviewComponent from '../components/ActivityExercisePreviewComponent';
 import MindfulnessPreviewComponent from '../components/MindfulnessPreviewComponent';
 
-export default class ActivitiesScreen extends React.Component {
+export default class ActivitiesComponent extends React.Component {
 
   constructor(props) {
     super(props);
@@ -68,16 +67,10 @@ export default class ActivitiesScreen extends React.Component {
   }
 
   render() {
-    const {navigate} = this.props.navigation;
+    // const {navigate} = this.props.navigation;
 
     return (
       <Container>
-
-        <HeaderComponent
-          navigate = {navigate}
-          title = "activities"
-          displayHomeButtons={true}
-        />
 
         <Content>
           {this.populateActivityLists()}
