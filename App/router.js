@@ -7,7 +7,6 @@ import ForgottenPasswordScreen from './screens/ForgottenPasswordScreen';
 
 import HomeScreen from './screens/HomeScreen';
 import DashboardScreen from './screens/DashboardScreen';
-import ActivitiesScreen from './screens/ActivitiesScreen';
 import DailyGymScreen from './screens/DailyGymScreen';
 import MindfulnessScreen from './screens/MindfulnessScreen';
 
@@ -32,14 +31,21 @@ const NavigationOnBoardingStack = StackNavigator({
 
 export const NavigationMainStack = StackNavigator({
   Home: {screen: HomeScreen},
-  Dashboard: {screen: DashboardScreen},
-  Activities: {screen: ActivitiesScreen},
+  Dashboard: {screen: DashboardScreen}
 },{
   headerMode: 'none',
+  mode: 'modal',
+});
+
+const DashboardStack = StackNavigator({
+  Dashboard: {screen: DashboardScreen}
+},{
+  headerMode: 'none',
+  mode: 'modal',
 });
 
 const DrawerRoutes = DrawerNavigator({
-  NavigationOnBoarding: {screen: NavigationOnBoardingStack},
+  // NavigationOnBoarding: {screen: NavigationOnBoardingStack},
   NavigationMain: {screen: NavigationMainStack},
   Help: {screen: HelpScreen},
   Account: {screen: AccountScreen},
