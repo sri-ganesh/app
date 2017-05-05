@@ -2,9 +2,12 @@ import React from 'react';
 import {StyleSheet, Text, View, AlertIOS, TouchableOpacity} from 'react-native';
 import { Container, Content, Footer, FooterTab, Button, Icon, Badge, List} from 'native-base';
 import { Col, Row, Grid } from "react-native-easy-grid";
+import Modal from 'react-native-modalbox';
 
 import HeaderComponent from '../components/HeaderComponent';
 import StepsComponent from '../components/StepsComponent';
+
+import ActivitiesComponent from '../components/ActivitiesComponent';
 
 export default class DashboardScreen extends React.Component {
 
@@ -79,11 +82,18 @@ export default class DashboardScreen extends React.Component {
             style={styles.bottomContainer}
           >
             <Col>
-              <TouchableOpacity onPress={this.onBackScorePress}>
-                <View style={styles.bottomBadge}>
-                  <Text>{this.state.backScore}/100</Text>
-                </View>
-              </TouchableOpacity>
+              <Row>
+                <TouchableOpacity onPress={this.onBackScorePress}>
+                  <View style={styles.bottomBadge}>
+                    <Text>{this.state.backScore}/100</Text>
+                  </View>
+                </TouchableOpacity>
+              </Row>
+              <Row>
+                <Button onPress={() => this.refs.modal.open()}>
+                  <Text>Activities</Text>
+                </Button>
+              </Row>
             </Col>
             <Col>
               <Row>
@@ -125,6 +135,9 @@ export default class DashboardScreen extends React.Component {
             </Col>
           </Row>
         </Grid>
+        <Modal style={styles.modal} position={"bottom"} ref={"modal"}>
+          <ActivitiesComponent />
+        </Modal>
       </Container>
     );
   }
@@ -137,5 +150,10 @@ const styles = StyleSheet.create({
   bottomBadge: {
     backgroundColor: '#E7EBEE',
     height: 75
-  }
+  },
+  modal: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 600
+  },
 });

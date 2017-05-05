@@ -9,6 +9,10 @@ export default class EditProfileScreen extends Component {
   static navigationOptions = {
   };
 
+
+//four gender states
+// ["None", "Female", "Male", "Non-Binary"]
+
   constructor(props) {
     super(props);
     this.state = {

@@ -38,21 +38,18 @@ export default class HomeScreen extends React.Component {
                 firstTime={this.state.firstTimeWelcome}
                 navigate={this.props.navigation}
               />
-              <Button
-                onPress={() => navigate('Dashboard')}
-              >
-                <Text>Dashboard</Text>
-              </Button>
-              <Button
-                onPress={() => navigate('Activities')}
-              >
-                <Text>Activities</Text>
-              </Button>
             </Row>
             <Row>
             </Row>
           </Grid>
         </Content>
+        <Footer>
+          <Button
+            onPress={() => navigate('Dashboard')}
+          >
+            <Text>Dashboard</Text>
+          </Button>
+        </Footer>
       </Container>
     );
   }
