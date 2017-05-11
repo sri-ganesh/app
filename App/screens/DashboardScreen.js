@@ -1,31 +1,35 @@
 import React from 'react';
-import {StyleSheet, Text, View, AlertIOS, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, AlertIOS, TouchableOpacity, ScrollView} from 'react-native';
 import { Container, Content, Footer, FooterTab, Button, Icon, Badge, List} from 'native-base';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import Modal from 'react-native-modalbox';
 
 import HeaderComponent from '../components/HeaderComponent';
-import StepsComponent from '../components/StepsComponent';
+import StepComponent from '../components/StepComponent';
 
 import ActivitiesComponent from '../components/ActivitiesComponent';
 
 export default class DashboardScreen extends React.Component {
+  static navigationOptions = ({ navigation, screenProps }) => ({
+    gesturesEnabled: screenProps.disableGestures,
+  });
 
   constructor(props) {
     super(props);
     this.state = {
       backScore: 29,
+      selections: [],
       steps: [
-        {content: "Knowledge"},
-        {content: "Life Gym"},
-        {content: "Cold"},
-        {content: "Life Gym"},
-        {content: "Life Gym"},
-        {content: "Life Gym"},
-        {content: "Knowledge"},
-        {content: "Meditation"},
-      ]
-    };
+        {label: "Knowledge"},
+        {label: "Life Gym"},
+        {label: "Cold"},
+        {label: "Life Gym"},
+        {label: "Life Gym"},
+        {label: "Life Gym"},
+        {label: "Knowledge"},
+        {label: "Meditation"},
+      ],
+    }
   }
 
   onBackScorePress = () => {
@@ -48,16 +52,23 @@ export default class DashboardScreen extends React.Component {
     AlertIOS.alert("Getting Steps!");
   }
 
-  populateStepsList = () => {
-    return this.state.steps.map(function(step, i){
-      return (
-        <StepsComponent
-          key={i}
-          id={i}
-          content={step.content}
-          active={{false}}
-        />
-      );
+  buildSteps = (step, i) => {
+    return (
+      <StepComponent
+        key={i}
+        index={i}
+        label={step.label}
+        selected={this.state.selections[i]}
+        onStepToggle={this.onStepToggle}
+      />
+    );
+  }
+
+  onStepToggle = (i, selected) => {
+    let selections = this.state.selections;
+    selections[i] = selected;
+    this.setState({
+      selections: selections
     });
   }
 
@@ -74,9 +85,10 @@ export default class DashboardScreen extends React.Component {
         <Grid>
           <Row size={75}>
             <List>
-              {this.populateStepsList()}
+              {this.state.steps.map(this.buildSteps)}
             </List>
           </Row>
+
           <Row
             size={25}
             style={styles.bottomContainer}
@@ -135,8 +147,17 @@ export default class DashboardScreen extends React.Component {
             </Col>
           </Row>
         </Grid>
-        <Modal style={styles.modal} position={"bottom"} ref={"modal"}>
-          <ActivitiesComponent />
+        <Modal
+          style={styles.modal}
+          position={"bottom"}
+          ref={"modal"}
+          swipeToClose={false}
+        >
+          <ScrollView>
+            <View>
+              <ActivitiesComponent />
+            </View>
+          </ScrollView>
         </Modal>
       </Container>
     );

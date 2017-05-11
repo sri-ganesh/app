@@ -9,22 +9,25 @@ import PainIndexComponent from '../components/PainIndexComponent';
 
 export default class HomeScreen extends React.Component {
 
-  state = {
-    firstTimeWelcome: true,
-    activeSection: false,
-    collapsed: true,
-    isOpen: false,
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstTimeWelcome: true,
+      activeSection: false,
+      collapsed: true,
+      isOpen: false,
       isDisabled: false,
       swipeToClose: true,
-      sliderValue: 0.3
-  };
+      sliderValue: 0.3,
+      disableGestures: true
+    };
+  }
 
   render() {
     const {navigate} = this.props.navigation;
 
     return (
       <Container>
-
         <HeaderComponent
           navigate = {navigate}
           title = "activebacks"

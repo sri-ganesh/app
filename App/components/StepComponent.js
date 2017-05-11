@@ -1,37 +1,34 @@
 import React, { Component } from 'react';
-import { StyleSheet, AlertIOS } from 'react-native';
+import { StyleSheet, AlertIOS, TouchableOpacity } from 'react-native';
 import { Header, Title, Button, Icon, Text, Left, Right, Body, Badge, ListItem} from 'native-base';
 import { Col, Row, Grid } from "react-native-easy-grid";
 
-export default class StepsComponent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      id: props.id,
-      content: props.content,
-      active: props.active
-    };
+const StepComponent = (props) => {
+
+  onToggle = () => {
+    props.onStepToggle(props.index, !props.selected);
   }
 
-  onContentPress = () => {
+  toggleStyle = () => {
+    return props.selected ?  styles.active : styles.nonActive
   }
 
-  render() {
-    return (
-      <ListItem>
+  return (
+    <ListItem style={{borderBottomWidth: 0}}>
+      <TouchableOpacity onPress={this.onToggle}>
         <Badge
-          key={this.state.id}
-          style={StyleSheet.flatten(styles.nonActive)}
+          key={props.index}
+          style={StyleSheet.flatten(this.toggleStyle())}
         >
           <Text
             style={StyleSheet.flatten(styles.text)}
           >
-            {this.state.content}
+            {props.label}
           </Text>
         </Badge>
-      </ListItem>
-    );
-  }
+      </TouchableOpacity>
+    </ListItem>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -48,3 +45,5 @@ const styles = StyleSheet.create({
     color: 'black'
   }
 });
+
+export default StepComponent;

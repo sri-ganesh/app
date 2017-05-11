@@ -6,7 +6,7 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 const HeaderComponent = (props) => {
 
   return (
-    <Header>
+    <Header style={StyleSheet.flatten(styles.rmLine)}>
       <Left>
         <Button
           transparent
@@ -52,6 +52,10 @@ HeaderComponent.defaultProps = {
 };
 
 const styles = StyleSheet.create({
+  rmLine: {
+    shadowOffset: {height: 0, width: 0},
+    shadowOpacity: 0
+  }
 });
 
 export default HeaderComponent;
