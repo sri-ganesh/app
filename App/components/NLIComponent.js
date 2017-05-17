@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, ScrollView} from 'react-native';
+import {StyleSheet, Text, View, ScrollView, TouchableOpacity} from 'react-native';
 import {Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Badge } from 'native-base';
 import {Col, Row, Grid} from "react-native-easy-grid";
 
-import SystemDialogComponent from './SystemDialogComponent';
-import UserDialogResponseComponent from './UserDialogResponseComponent';
+import OpenerDialogComponent from './OpenerDialogComponent';
+import ResponseDialogComponent from './ResponseDialogComponent';
 
 import NLIDialog from '../NLIDialog';
 
@@ -15,64 +15,79 @@ export default class NLIComponent extends React.Component {
     this.state = {
       data: NLIDialog,
       currentOpener: 0,
-      currentUserReponse: 0
+      displayedOpeners: [0]
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.setState({data: NLIDialog});
+  }
+
+  componentDidUpdate() {
+    this.nextOpener();
   }
 
   onPressedEvent = () => {
   }
-/*
-<UserDialogResponseComponent
-  respText={dialog.responses[0]}
-  isThereAny={dialog.isThereAnyResponses}
-  style={styles.leftResponse}
-/>
-<UserDialogResponseComponent
-  respText={dialog.responses[1]}
-  isThereAny={dialog.isThereAnyResponses}
-  style={styles.leftResponse}
-/>
-*/
 
-/*
-let dialogs = this.state.data.map(function(dialog, i){
-  return  (
-    <View>
-      <SystemDialogComponent
-        key={dialog.id}
-        inputText={dialog.opener}
-      />
-    </View>
-  );
-});
-*/
+  nextOpener = () => {
+    let newDisplayedOpeners = this.state.displayedOpeners;
+    let currentOpener = this.state.currentOpener;
 
-  showCurrentOpener = () => {
+    if (this.state.data[currentOpener].responses.length == 0) {
+      currentOpener++;
+      newDisplayedOpeners.push(currentOpener);
+      this.setState({
+        currentOpener: currentOpener,
+        displayedOpeners: newDisplayedOpeners
+      })
+    }
+  }
+
+  incrementOpener = () => {
+    let newDisplayedOpeners = this.state.displayedOpeners;
+    let currentOpener = this.state.currentOpener;
+    currentOpener++;
+    newDisplayedOpeners.push(currentOpener);
+    this.setState({
+      currentOpener: currentOpener,
+      displayedOpeners: newDisplayedOpeners
+    })
+  }
+
+  renderOpeners = (opener, i) => {
     return(
-      <SystemDialogComponent
-        inputText={this.state.data[this.state.currentOpener].opener}
+      <OpenerDialogComponent
+        key={i}
+        inputText={this.state.data[opener].opener}
       />
     );
   }
 
-  showCurrentResponses = () => {
+  renderCurrentResponses = (response, i) => {
     return(
-      <UserDialogResponseComponent
-        inputText={dialog.responses[1]}
-      />
+      <Col key={i}>
+        <TouchableOpacity onPress={this.incrementOpener}>
+          <ResponseDialogComponent
+            inputText={response}
+          />
+        </TouchableOpacity>
+      </Col>
     );
   }
-  
+
+  /*pass function to child then on click pass back to parrent*/
   render() {
     return (
       <Container>
-        <ScrollView>
-          {this.showCurrentOpener()}
-        </ScrollView>
+        <Row size={3}>
+          <ScrollView>
+            {this.state.displayedOpeners.map(this.renderOpeners)}
+          </ScrollView>
+        </Row>
+        <Row size={1}>
+          {this.state.data[this.state.currentOpener].responses.map(this.renderCurrentResponses)}
+        </Row>
       </Container>
     );
   }

@@ -12,6 +12,7 @@ export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      userData: '',
       username: 'antero.duarte',
       password: 'testpassword',
       firstTimeWelcome: true,
@@ -26,7 +27,6 @@ export default class HomeScreen extends React.Component {
   }
 
   componentWillMount() {
-
     fetch('https://activexbacks.com/api/user/token', {
       method: 'POST',
       headers: {
@@ -51,7 +51,7 @@ export default class HomeScreen extends React.Component {
         })
       }).then( (userData) => {
         if(userData.status === 200){
-          alert(JSON.stringify(userData));
+          this.setState({userData: userData});
         }
         else{
           alert('Login Failed. Please try again');
@@ -61,7 +61,7 @@ export default class HomeScreen extends React.Component {
       });
     }).catch((error) => {
       alert('User authentication failed for reason: '+error);
-    });
+   });
   }
 
   render() {
@@ -82,8 +82,6 @@ export default class HomeScreen extends React.Component {
                 firstTime={this.state.firstTimeWelcome}
                 navigate={this.props.navigation}
               />
-            </Row>
-            <Row>
             </Row>
           </Grid>
         </Content>

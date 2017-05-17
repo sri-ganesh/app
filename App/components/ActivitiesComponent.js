@@ -23,7 +23,7 @@ export default class ActivitiesComponent extends React.Component {
   }
 
   populateLists = () => {
-    return this.state.options.map(function(option, i){
+    return this.state.options.map((option, i) => {
       return (
         <ActivityListComponent
           key={i}

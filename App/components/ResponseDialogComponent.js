@@ -2,25 +2,27 @@ import React, {Component} from 'react';
 import {Text, StyleSheet, View} from 'react-native';
 import {Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Badge } from 'native-base';
 
-const SystemDialogComponent = ({inputText}) => {
+const ResponseDialogComponent = (props) => {
   return (
-    <View style={styles.circle}>
+    <View style={styles.response}>
       <Text>
-        {inputText}
+        {props.inputText}
       </Text>
     </View>
-  );
+  )
 }
 
 // inputText.propTypes = { PropTypes.string }
+
 const styles = StyleSheet.create({
-  circle: {
-    width: 200,
+  response: {
+    width: 100,
+    height: 20,
     borderRadius: 10/2,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'red'
+    backgroundColor: 'lime'
   },
 });
 
-export default SystemDialogComponent;
+export default ResponseDialogComponent;
