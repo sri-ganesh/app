@@ -10,6 +10,7 @@ export default class App extends Component {
     };
   }
   //https://gist.github.com/ronnyhartenstein/1ef30c90f530f99430969925198d6970
+  //
   render() {
     const {isLoggedIn} = this.state;
 
